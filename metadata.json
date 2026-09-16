@@ -1,7 +1,7 @@
 {
     "KPlugin": {
-        "Name": "Smart Panel",
-        "Description": "Makes any panel visible while a set key (like meta) is being held.",
+        "Name": "Smart Panels",
+        "Description": "Configure panels to be visible while switching desktops, using KRunner, or the Application Launcher.",
         "Icon": "preferences-system-windows",
         
         "Authors": [
@@ -13,9 +13,10 @@
         "Id": "myscript",
         "Version": "1.0",
         "License": "GPLv3",
-        "Website": "https://github.com/kadisonm/kwin-smart-panel"
+        "Website": "https://github.com/kadisonm/kwin-smart-panels"
     },
     "X-Plasma-API": "javascript",
     "X-Plasma-MainScript": "code/main.js",
-    "KPackageStructure": "KWin/Script"
+    "KPackageStructure": "KWin/Script",
+    "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted"
 }
