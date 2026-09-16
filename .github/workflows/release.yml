@@ -1,0 +1,20 @@
+name: Release KWin Script
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build add-on
+        run: |
+          zip -r ./smart-panels.zip *
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create draft --draft smart-panels.zip

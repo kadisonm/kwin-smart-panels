@@ -1,0 +1,24 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What were you expecting?
+      placeholder: Describe what you see.
+    validations:
+      required: true
+  - type: textarea
+    id: distro
+    attributes:
+      label: Distro?
+      placeholder: Arch... Ubuntu...
+    validations:
+      required: true
