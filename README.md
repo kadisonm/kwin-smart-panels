@@ -1,5 +1,5 @@
 # kwin-smart-panel
-Configure panels to be visible while switching desktops, using KRunner, or the Application Launcher.
+A KWin script that automatically shows your panels during key actions (Switching Desktops / KRunner / Application Launcher).
 
 ## Installation
 
