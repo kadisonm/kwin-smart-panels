@@ -1,4 +1,7 @@
 # Development
+API: https://develop.kde.org/docs/plasma/kwin/api/#signals-1
+GUIDE: https://develop.kde.org/docs/plasma/kwin/#output
+
 ## Debugging
 Execute the script using: `WM Console`.
 Or running:
