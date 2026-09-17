@@ -1,7 +1,7 @@
 {
     "KPlugin": {
         "Name": "Smart Panels",
-        "Description": "Configure panels to be visible while switching desktops, using KRunner, or the Application Launcher.",
+        "Description": "Automatically show your panels during key actions (Switching Desktops / KRunner / Application Launcher).",
         "Icon": "preferences-system-windows",
         
         "Authors": [

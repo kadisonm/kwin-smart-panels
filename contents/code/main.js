@@ -23,7 +23,7 @@ let timer = new QTimer();
 timer.singleShot = true;
 
 function loadConfig() {
-    config.panels = readConfig("panelIds", "106,143").split(",").map(panel => parseInt(panel));
+    config.panels = readConfig("panelIds", "").split(",").map(panel => parseInt(panel));
     config.showOnDesktopChange = readConfig("showOnDesktopChange", true);
     config.hideAfter = readConfig("hideAfter", 1500);
     config.resourceNames = readConfig("resourceNames", "krunner,plasmashell").split(",").map(name => name.trim());
