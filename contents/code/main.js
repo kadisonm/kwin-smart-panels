@@ -14,25 +14,23 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 // Configuration
-const PANELS = readConfig("panelIds", "106,143").split(",").map(panel => parseInt(panel));
-const SHOW_ON_DESKTOP_CHANGE = readConfig("showOnDesktopChange", true);
-const HIDE_AFTER = readConfig("hideAfter", 1500);
-const RESOURCE_NAMES = readConfig("resourceNames", "krunner,plasmashell").split(",").map(name => name.trim());
+let config = {};
 
 // Runtime
 let windowVisible = false;
 
 let timer = new QTimer();
-timer.interval = HIDE_AFTER;
 timer.singleShot = true;
 
-for (let name in RESOURCE_NAMES) {
-    print("NAME:" + name);
+function loadConfig() {
+    config.panels = readConfig("panelIds", "106,143").split(",").map(panel => parseInt(panel));
+    config.showOnDesktopChange = readConfig("showOnDesktopChange", true);
+    config.hideAfter = readConfig("hideAfter", 1500);
+    config.resourceNames = readConfig("resourceNames", "krunner,plasmashell").split(",").map(name => name.trim());
 }
 
 function showPanels() {
-    for (let panel of PANELS) {
-        print("SHOW:" + panel);
+    for (let panel of config.panels) {
         callDBus(
             'org.kde.plasmashell', 
             '/PlasmaShell', 
@@ -44,8 +42,7 @@ function showPanels() {
 }
 
 function hidePanels() {
-    for (let panel of PANELS) {
-        print("HIDE" + panel);
+    for (let panel of config.panels) {
         callDBus(
             'org.kde.plasmashell', 
             '/PlasmaShell', 
@@ -57,14 +54,16 @@ function hidePanels() {
 }
 
 function windowAdded(window) {
-    if (window.resourceName in RESOURCE_NAMES) {
+    if (config.resourceNames.includes(window.resourceName)) {
         showPanels();
+        timer.stop();
         windowVisible = true;
     }
 }
 
 function windowRemoved(window) {
-    if (window.resourceName in RESOURCE_NAMES) {
+    // User defined windows to hide panel on
+    if (config.resourceNames.includes(window.resourceName)) {
         hidePanels();
         windowVisible = false;
     }
@@ -90,18 +89,20 @@ function desktopChanged() {
 function main() {
     // Set up
     print("===== Smart Panels Loaded ====")
+    loadConfig();
+
+    timer.interval = config.hideAfter;
 
     // Timer can be used to hide panels after x ms
     timer.timeout.connect(function() {
         hidePanels();
-        print("3 seconds passed!");
     });
 
     // Connect signals
     workspace.windowAdded.connect(windowAdded);
     workspace.windowRemoved.connect(windowRemoved);
 
-    if (SHOW_ON_DESKTOP_CHANGE) {
+    if (config.showOnDesktopChange) {
         workspace.currentDesktopChanged.connect(desktopChanged);
     }
 }
