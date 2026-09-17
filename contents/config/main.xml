@@ -5,7 +5,7 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/sta
     <kcfgfile name=""/>
 
     <group name="">
-        <entry name="panelIds" type="IntList">
+        <entry name="panelIds" type="String">
             <default></default>
         </entry>
 
@@ -14,15 +14,11 @@ xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/sta
         </entry>
 
         <entry name="hideAfter" type="Int">
-            <default>20000</default>
+            <default>1500</default>
         </entry>
 
-        <entry name="showOnResourceOpen" type="Bool">
-            <default>True</default>
-        </entry>
-
-        <entry name="resourceNames" type="StringList">
-            <default>plasmashell, krunner</default>
+        <entry name="resourceNames" type="String">
+            <default>krunner,plasmashell</default>
         </entry>
     </group>
 </kcfg>

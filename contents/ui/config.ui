@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>469</width>
-    <height>395</height>
+    <width>417</width>
+    <height>383</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,6 @@
    <property name="spacing">
     <number>10</number>
    </property>
-   <item>
-    <widget class="KTitleWidget" name="ktitlewidget">
-     <property name="text">
-      <string>Smart Panels</string>
-     </property>
-    </widget>
-   </item>
    <item>
     <widget class="QLabel" name="label_5">
      <property name="text">
@@ -36,8 +29,14 @@
    </item>
    <item>
     <widget class="QTabWidget" name="tabWidget">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>307</height>
+      </size>
+     </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="tabBarAutoHide">
       <bool>false</bool>
@@ -50,7 +49,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Panel IDs&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The panels added to this list will be toggled in visibility. &lt;br/&gt;To get the IDs of your panels check,&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; color:#00aaff;&quot;&gt;`~/.config/plasmashellrc`&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Panel IDs&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The panels added to this list will be toggled in visibility. &lt;br/&gt;&lt;br/&gt;To get the IDs of your panels check,&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; color:#00aaff;&quot;&gt;`~/.config/plasmashellrc`&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -58,14 +57,34 @@
         </widget>
        </item>
        <item>
-        <widget class="KEditListWidget" name="panelsList_2">
-         <property name="whatsThis">
-          <string/>
-         </property>
-         <property name="buttons">
-          <set>KEditListWidget::Button::Add|KEditListWidget::Button::Remove</set>
+        <widget class="QLineEdit" name="kcfg_panelIds">
+         <property name="placeholderText">
+          <string>106,143</string>
          </property>
         </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>&lt;i&gt;Panel IDs should be seperated by comma e.g. &quot;106,143&quot;&lt;/i&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::TextFormat::RichText</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -105,19 +124,6 @@
          </property>
          <property name="wordWrap">
           <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QTimeEdit" name="kcfg_hideAfter">
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-         </property>
-         <property name="currentSection">
-          <enum>QDateTimeEdit::Section::MinuteSection</enum>
-         </property>
-         <property name="displayFormat">
-          <string notr="true" extracomment="ms">ms</string>
          </property>
         </widget>
        </item>
@@ -168,149 +174,82 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="kcfg_hideAfter">
+         <property name="suffix">
+          <string> ms</string>
+         </property>
+         <property name="maximum">
+          <number>180000</number>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>Window Resources</string>
+       <string>Resource Opened</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="sizeConstraint">
-        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-       </property>
        <item>
-        <widget class="QWidget" name="label_2" native="true">
+        <widget class="QLabel" name="label_7">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <layout class="QFormLayout" name="formLayout_2">
-          <property name="sizeConstraint">
-           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-          </property>
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
-          </property>
-          <property name="rowWrapPolicy">
-           <enum>QFormLayout::RowWrapPolicy::WrapLongRows</enum>
-          </property>
-          <property name="labelAlignment">
-           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-          </property>
-          <property name="formAlignment">
-           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-          </property>
-          <property name="horizontalSpacing">
-           <number>100</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Show panels while resources are open</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QCheckBox" name="KCFG_showOnResourceOpen">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Resource Names&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Show the panels while the specified resources are opened. (Default: Krunner, Application Launcher)&lt;br/&gt;&lt;br/&gt;Using the incorrect names or formatting will result in the feature breaking.&lt;/p&gt;&lt;p&gt;Leave this blank to disable this feature.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
-        <widget class="KEditListWidget" name="kcfg_panelIDs">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>1</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="buttons">
-          <set>KEditListWidget::Button::Add|KEditListWidget::Button::Remove</set>
+        <widget class="QLineEdit" name="kcfg_resourceNames">
+         <property name="placeholderText">
+          <string>krunner,plasmashell</string>
          </property>
         </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>&lt;i&gt;Resource names should be separated by commas e.g. &quot;krunner,plasmashell&quot;.&lt;/i&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
     </widget>
    </item>
-   <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KEditListWidget</class>
-   <extends>QWidget</extends>
-   <header>keditlistwidget.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KTitleWidget</class>
-   <extends>QWidget</extends>
-   <header>ktitlewidget.h</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>kcfg_hideAfter</tabstop>
-  <tabstop>KCFG_showOnResourceOpen</tabstop>
   <tabstop>kcfg_showOnDesktopChange</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>179</x>
-     <y>369</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>179</x>
-     <y>375</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

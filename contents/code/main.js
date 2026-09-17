@@ -14,42 +14,57 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 // Configuration
-const PANELS = readConfig("panelIds", []);
+const PANELS = readConfig("panelIds", "106,143").split(",").map(panel => parseInt(panel));
 const SHOW_ON_DESKTOP_CHANGE = readConfig("showOnDesktopChange", true);
-const HIDE_AFTER = readConfig("hideAfter", true);
-const SHOW_ON_RESOURCE_OPEN = readConfig("showOnResourceOpen", true);
-const RESOURCE_NAMES = readConfig("resourceNames", []);
+const HIDE_AFTER = readConfig("hideAfter", 1500);
+const RESOURCE_NAMES = readConfig("resourceNames", "krunner,plasmashell").split(",").map(name => name.trim());
 
 // Runtime
 let windowVisible = false;
 
 let timer = new QTimer();
-timer.interval = 3000;
+timer.interval = HIDE_AFTER;
 timer.singleShot = true;
 
-// for (let panel of PANELS) {
-//     print(panel);
-// }
+for (let name in RESOURCE_NAMES) {
+    print("NAME:" + name);
+}
 
 function showPanels() {
-    callDBus('org.kde.plasmashell', '/PlasmaShell', 'org.kde.PlasmaShell', 'evaluateScript', 'panelById(106).hiding = "windowsgobelow"');
-    callDBus('org.kde.plasmashell', '/PlasmaShell', 'org.kde.PlasmaShell', 'evaluateScript', 'panelById(143).hiding = "windowsgobelow"');
+    for (let panel of PANELS) {
+        print("SHOW:" + panel);
+        callDBus(
+            'org.kde.plasmashell', 
+            '/PlasmaShell', 
+            'org.kde.PlasmaShell', 
+            'evaluateScript', 
+            `panelById(${panel}).hiding = "windowsgobelow"`
+        );
+    }
 }
 
 function hidePanels() {
-    callDBus('org.kde.plasmashell', '/PlasmaShell', 'org.kde.PlasmaShell', 'evaluateScript', 'panelById(106).hiding = "dodgewindows"');
-    callDBus('org.kde.plasmashell', '/PlasmaShell', 'org.kde.PlasmaShell', 'evaluateScript', 'panelById(143).hiding = "dodgewindows"');
+    for (let panel of PANELS) {
+        print("HIDE" + panel);
+        callDBus(
+            'org.kde.plasmashell', 
+            '/PlasmaShell', 
+            'org.kde.PlasmaShell', 
+            'evaluateScript', 
+            `panelById(${panel}).hiding = "dodgewindows"`
+        );
+    }
 }
 
 function windowAdded(window) {
-    if (window.resourceName == "plasmashell" || window.resourceName == "krunner") {
+    if (window.resourceName in RESOURCE_NAMES) {
         showPanels();
         windowVisible = true;
     }
 }
 
 function windowRemoved(window) {
-    if (window.resourceName == "plasmashell" || window.resourceName == "krunner") {
+    if (window.resourceName in RESOURCE_NAMES) {
         hidePanels();
         windowVisible = false;
     }
@@ -85,7 +100,10 @@ function main() {
     // Connect signals
     workspace.windowAdded.connect(windowAdded);
     workspace.windowRemoved.connect(windowRemoved);
-    workspace.currentDesktopChanged.connect(desktopChanged);
+
+    if (SHOW_ON_DESKTOP_CHANGE) {
+        workspace.currentDesktopChanged.connect(desktopChanged);
+    }
 }
 
 main();
