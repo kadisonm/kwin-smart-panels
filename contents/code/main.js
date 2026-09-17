@@ -14,9 +14,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 // Configuration
-const PANELS = readConfig("panelIds");
+const PANELS = readConfig("panelIds", []);
 const SHOW_ON_DESKTOP_CHANGE = readConfig("showOnDesktopChange", true);
-const VISIBILITY_TIMEOUT = readConfig("visibilityTimeout", true);
+const HIDE_AFTER = readConfig("hideAfter", true);
+const SHOW_ON_RESOURCE_OPEN = readConfig("showOnResourceOpen", true);
 const RESOURCE_NAMES = readConfig("resourceNames", []);
 
 // Runtime

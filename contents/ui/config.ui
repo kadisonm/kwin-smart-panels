@@ -37,7 +37,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="tabBarAutoHide">
       <bool>false</bool>
@@ -96,7 +96,7 @@
         <number>6</number>
        </property>
        <item row="1" column="0">
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="label_6">
          <property name="toolTip">
           <string>The time it takes until the panel disappears after switching desktops.</string>
          </property>
@@ -109,7 +109,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QTimeEdit" name="timeEdit">
+        <widget class="QTimeEdit" name="kcfg_hideAfter">
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
@@ -122,7 +122,7 @@
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="label_3">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -141,7 +141,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QCheckBox" name="checkBox_2">
+        <widget class="QCheckBox" name="kcfg_showOnDesktopChange">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -179,7 +179,7 @@
         <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
        </property>
        <item>
-        <widget class="QWidget" name="widget" native="true">
+        <widget class="QWidget" name="label_2" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -222,7 +222,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QCheckBox" name="checkBox_4">
+           <widget class="QCheckBox" name="KCFG_showOnResourceOpen">
             <property name="text">
              <string/>
             </property>
@@ -232,7 +232,7 @@
         </widget>
        </item>
        <item>
-        <widget class="KEditListWidget" name="panelsList_3">
+        <widget class="KEditListWidget" name="kcfg_panelIDs">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -274,9 +274,9 @@
  </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>timeEdit</tabstop>
-  <tabstop>checkBox_4</tabstop>
-  <tabstop>checkBox_2</tabstop>
+  <tabstop>kcfg_hideAfter</tabstop>
+  <tabstop>KCFG_showOnResourceOpen</tabstop>
+  <tabstop>kcfg_showOnDesktopChange</tabstop>
  </tabstops>
  <resources/>
  <connections>
