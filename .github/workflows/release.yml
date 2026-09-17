@@ -11,10 +11,10 @@ jobs:
       
       - name: Build add-on
         run: |
-          zip -r ./smart-panels.zip *
+          zip -r ./smart-panels.kwinscript *
 
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create draft --draft smart-panels.zip
+          gh release create draft --draft smart-panels.kwinscript

@@ -4,7 +4,7 @@
     {
       "label": "Create debugging zip",
       "type": "shell",
-      "command": "mkdir -p output && zip -r \"output/debug-smart-panels.zip\" . -x \"output/*\" -x \".git/*\"",
+      "command": "mkdir -p output && zip -r \"output/debug-smart-panels.kwinscript\" . -x \"output/*\" -x \".git/*\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
