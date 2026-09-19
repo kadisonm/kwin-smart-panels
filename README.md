@@ -40,6 +40,12 @@ Smart Panel
 Feel free to submit a feature request or bug report here!
 
 ## Installation
+Navigate to `Window Management > KWin Scripts > Get New...` and search `Smart Panels > Install`.
+
+### Manual Import
+Download the `.kwinscript` from the [KDE Store](https://store.kde.org/p/2371541) or the latest GitHub Release and install it through `Window Management > KWin Scripts > Install From File`.
+
+## Usage
 Configure Smart Panels at `Settings > Window Management > KWin Scripts > Smart Panels > Configure`
 
 Panel IDs can be found in `~/.config/plasmashellrc`
